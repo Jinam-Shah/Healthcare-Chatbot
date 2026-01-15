@@ -1,0 +1,515 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Good morning",
+        "Good evening",
+        "Hey",
+        "Is anyone there?",
+        "Hi there",
+        "Hello there"
+      ],
+      "responses": [
+        "Hello! How can I assist you today?",
+        "Hi, welcome to the healthcare assistant. How are you feeling today?",
+        "Good day! How may I help you with your health concerns?",
+        "Hi there! What brings you here today?",
+        "Greetings! How can I assist you with your health questions?"
+      ]
+    },
+    {
+      "tag": "how_are_you",
+      "patterns": [
+        "How are you?",
+        "How are you doing?",
+        "What's up?",
+        "How's it going?"
+      ],
+      "responses": [
+        "I'm a virtual assistant, here to help you with your health queries. How can I assist?",
+        "I’m doing great, thank you! How can I assist you today?",
+        "I’m always ready to help! How are you feeling today?",
+        "I'm here to assist you! How can I help with your health concerns?",
+        "Thanks for asking! How may I assist you with your health today?"
+      ]
+    },
+    {
+      "tag": "general_health_check",
+      "patterns": [
+        "I’m feeling unwell",
+        "I don’t feel well",
+        "I'm not feeling good",
+        "I feel sick",
+        "I think I'm getting sick",
+        "I don't feel like myself"
+      ],
+      "responses": [
+        "I'm sorry to hear that. Can you describe your symptoms?",
+        "Let’s get to the bottom of it. What symptoms are you experiencing?",
+        "I can help. Could you tell me a bit more about how you're feeling?",
+        "I'm here to help. What are your main symptoms right now?",
+        "That doesn't sound good. Can you share what symptoms you're experiencing?"
+      ]
+    },
+    {
+      "tag": "symptom_query",
+      "patterns": [
+        "I have a headache",
+        "I feel nauseous",
+        "I have a sore throat",
+        "I am coughing",
+        "I have a fever",
+        "I feel tired",
+        "My stomach hurts",
+        "I have muscle pain",
+        "I am having difficulty breathing",
+        "I feel dizzy",
+        "I have a rash"
+      ],
+      "responses": [
+        "Thanks for sharing. How long have you had these symptoms?",
+        "Can you tell me when the symptoms started?",
+        "How would you rate the severity of these symptoms on a scale of 1 to 10?",
+        "How long have you been experiencing these symptoms?",
+        "Thank you for sharing. Have these symptoms worsened or improved over time?"
+      ],
+      "context_followup": [
+        "duration_query",
+        "severity_query"
+      ]
+    },
+    {
+      "tag": "duration_query",
+      "patterns": [
+        "It started today",
+        "It’s been a day",
+        "It started a few days ago",
+        "It’s been happening for a week",
+        "I’ve had this for over a week",
+        "For the past month"
+      ],
+      "responses": [
+        "Got it. Are you experiencing any other symptoms along with this?",
+        "Thank you for that information. Have you noticed any changes or new symptoms since it began?",
+        "Understood. Have these symptoms remained constant or have they gotten worse?",
+        "Thanks. Are there any additional symptoms you'd like to mention?",
+        "Okay. Have you noticed anything else, like a fever or cough?"
+      ]
+    },
+    {
+      "tag": "severity_query",
+      "patterns": [
+        "It’s very mild",
+        "It's mild",
+        "It’s moderate",
+        "It's pretty severe",
+        "It's unbearable",
+        "On a scale of 1 to 10, it's a 5",
+        "I'd say it's about a 7 out of 10"
+      ],
+      "responses": [
+        "Thank you for that. Have you taken any medication or treatment so far?",
+        "Got it. Are there any other symptoms that have come up?",
+        "Thank you. Have you noticed anything like dizziness or chest pain along with this?",
+        "Thanks for that detail. Are you noticing any improvements or is it getting worse?",
+        "Got it. Have you consulted a doctor about these symptoms yet?"
+      ],
+      "context_followup": [
+        "treatment_query",
+        "additional_symptom_query"
+      ]
+    },
+    {
+      "tag": "flu",
+      "patterns": [
+        "I think I have the flu",
+        "What are flu symptoms?",
+        "Do I have the flu?",
+        "I’m coughing and have a fever",
+        "Could this be the flu?",
+        "I have body aches and a sore throat",
+        "I feel tired and feverish"
+      ],
+      "responses": [
+        "Flu symptoms typically include fever, cough, sore throat, body aches, and fatigue. Do you have these symptoms?",
+        "It sounds like you may have the flu. Are you also experiencing chills or fatigue?",
+        "If you're feeling feverish with body aches and a cough, it could be the flu. Have you had these symptoms for more than a day?",
+        "To better assess if it's the flu, can you let me know if you've experienced a sore throat and runny nose?",
+        "The flu can cause body aches, fever, and fatigue. How long have you been feeling this way?"
+      ],
+      "context_followup": [
+        "flu_duration",
+        "flu_severity"
+      ]
+    },
+    {
+      "tag": "cold",
+      "patterns": [
+        "I think I have a cold",
+        "What are cold symptoms?",
+        "Do I have a cold?",
+        "I’m sneezing and have a stuffy nose",
+        "Could this be a cold?",
+        "I have a mild cough and runny nose",
+        "I feel congested"
+      ],
+      "responses": [
+        "Cold symptoms typically include sneezing, runny nose, mild cough, and congestion. Are you experiencing any of these?",
+        "It sounds like you might have a cold. Have you been sneezing and experiencing a runny or stuffy nose?",
+        "If you’re experiencing congestion, sneezing, and a mild cough, it could be a cold. How long have you had these symptoms?",
+        "Colds generally cause sneezing and congestion. How severe is the congestion?",
+        "It could be a cold if you're feeling congested with a runny nose. Have you noticed any fever?"
+      ],
+      "context_followup": [
+        "cold_duration",
+        "cold_severity"
+      ]
+    },
+    {
+      "tag": "flu_duration",
+      "patterns": [
+        "It just started today",
+        "I’ve had it for a few days",
+        "It’s been over a week",
+        "For the last three days",
+        "It started yesterday"
+      ],
+      "responses": [
+        "If it’s been more than a few days, the flu could be the cause. Have you been taking any medication?",
+        "Thanks for sharing. If the symptoms persist beyond a week or worsen, it’s best to consult a doctor.",
+        "It sounds like the flu. Are your symptoms worsening or staying the same?",
+        "Got it. If the flu persists for more than a week or worsens, a doctor’s visit may be necessary.",
+        "If it's been a few days, keep monitoring your symptoms. Rest and hydration can help. Have you seen a doctor yet?"
+      ]
+    },
+    {
+      "tag": "cold_duration",
+      "patterns": [
+        "It started today",
+        "It's been a few days",
+        "I’ve had these symptoms for over a week",
+        "For about 3 days",
+        "It started two days ago"
+      ],
+      "responses": [
+        "If the cold has lasted more than a few days, it might be worth consulting a doctor.",
+        "Thanks for sharing. Most colds clear up in a week, but if symptoms persist, you may want to visit a doctor.",
+        "If the symptoms are lasting beyond a week, I’d recommend consulting with a healthcare provider.",
+        "It sounds like a common cold. If symptoms get worse or you notice any fever, consider seeing a doctor.",
+        "Thank you for the info. If symptoms are not improving after a few days, you might need further evaluation."
+      ]
+    },
+    {
+      "tag": "flu_severity",
+      "patterns": [
+        "It’s mild",
+        "It’s pretty severe",
+        "It's unbearable",
+        "It’s moderate",
+        "It’s a 6 out of 10"
+      ],
+      "responses": [
+        "Thanks for that. If the symptoms are severe or worsening, it might be best to consult a doctor.",
+        "Severe flu symptoms may need medical attention, especially if they persist. Have you been feeling short of breath?",
+        "If it’s unbearable, I’d recommend visiting a doctor to assess the severity of the flu.",
+        "For moderate flu, rest, hydration, and over-the-counter medications might help. Have you tried anything to relieve the symptoms?",
+        "If your symptoms are moderate or severe, consider visiting a doctor, especially if you have difficulty breathing."
+      ]
+    },
+    {
+      "tag": "cold_severity",
+      "patterns": [
+        "It’s mild",
+        "It’s moderate",
+        "It’s pretty bad",
+        "It’s unbearable",
+        "I’d say it’s a 4 out of 10"
+      ],
+      "responses": [
+        "Thanks for that information. For mild cold symptoms, rest, hydration, and over-the-counter medication can help. Have you tried any remedies?",
+        "If it's moderate, staying hydrated and resting might help. Have you noticed any improvement?",
+        "For bad cold symptoms, you might want to try decongestants or consult a doctor if it gets worse.",
+        "If the symptoms feel unbearable, it’s a good idea to see a doctor to make sure there isn’t a secondary infection.",
+        "If your symptoms are rated 4 out of 10, rest and hydration might help. Let me know if things change or if the symptoms worsen."
+      ]
+    },
+    {
+      "tag": "fever_query",
+      "patterns": [
+        "I have a fever",
+        "My temperature is high",
+        "I think I have a fever",
+        "I'm feeling feverish",
+        "I have chills and a fever"
+      ],
+      "responses": [
+        "What’s your current temperature? A fever is usually considered 100.4°F (38°C) or higher.",
+        "Have you checked your temperature? If it's above 100.4°F (38°C), it's a fever.",
+        "Fever is typically considered a temperature above 100.4°F. Do you feel any body aches or chills?",
+        "Let me know your temperature. If it’s a high fever, it might be a sign of flu or another illness.",
+        "If you have chills and a fever, it could be a sign of an infection. Do you know your exact temperature?"
+      ],
+      "context_followup": [
+        "fever_duration",
+        "fever_severity"
+      ]
+    },
+    {
+      "tag": "fever_duration",
+      "patterns": [
+        "It just started today",
+        "I’ve had it for a few days",
+        "It’s been over a week",
+        "For the last three days",
+        "It started yesterday"
+      ],
+      "responses": [
+        "If it's just started today, monitor it closely. If it persists beyond three days, you may want to consult a doctor.",
+        "Thank you for sharing. If the fever lasts more than three days, it's a good idea to see a healthcare provider.",
+        "If the fever has been going on for over a week, I’d recommend seeing a doctor to rule out any serious infections.",
+        "A fever lasting beyond three days could be concerning. Please keep monitoring and consult a doctor if it worsens.",
+        "If it started yesterday, try to rest, stay hydrated, and take over-the-counter fever reducers if needed."
+      ]
+    },
+    {
+      "tag": "fever_severity",
+      "patterns": [
+        "It's mild",
+        "It’s severe",
+        "It's moderate",
+        "It’s pretty bad",
+        "It's unbearable"
+      ],
+      "responses": [
+        "For mild fevers, rest and hydration are usually effective. If it gets worse, consult a doctor.",
+        "Severe fevers may indicate a more serious infection. If it doesn’t go down, you should seek medical attention.",
+        "For moderate fevers, try taking fever-reducing medication and drink lots of fluids. Let me know if it worsens.",
+        "If it feels pretty bad, it’s important to keep monitoring your temperature. If it doesn't improve, visit a doctor.",
+        "For unbearable fevers, I’d recommend heading to a healthcare provider right away to check for underlying causes."
+      ]
+    },
+    {
+      "tag": "sore_throat",
+      "patterns": [
+        "I have a sore throat",
+        "My throat hurts",
+        "I'm having trouble swallowing",
+        "My throat feels scratchy",
+        "I have a dry throat"
+      ],
+      "responses": [
+        "A sore throat can be a sign of a viral or bacterial infection. Do you have any other symptoms like a fever or cough?",
+        "If your throat hurts, try drinking warm liquids and resting your voice. Are you experiencing any fever or coughing?",
+        "A sore throat could be from a cold, flu, or strep throat. Have you noticed any swollen glands or difficulty swallowing?",
+        "Sore throats are often accompanied by a dry or scratchy feeling. Do you also have congestion or runny nose?",
+        "If your throat feels sore or scratchy, try gargling with warm saltwater. Let me know if you have any other symptoms."
+      ],
+      "context_followup": [
+        "sore_throat_duration",
+        "sore_throat_severity"
+      ]
+    },
+    {
+      "tag": "sore_throat_duration",
+      "patterns": [
+        "It just started today",
+        "I’ve had it for a few days",
+        "It’s been a week",
+        "It started yesterday",
+        "It's been over a week"
+      ],
+      "responses": [
+        "If it just started today, try to rest and monitor for other symptoms. Let me know if it worsens or persists.",
+        "Thanks for sharing. If it’s been more than a few days, especially with other symptoms, it could be an infection like strep throat.",
+        "If the sore throat lasts more than a week, it’s a good idea to see a healthcare provider for a check-up.",
+        "If it started yesterday, monitor your symptoms closely. Have you noticed any fever or swollen glands?",
+        "If it’s been over a week, it may be time to see a doctor, especially if you’re experiencing additional symptoms."
+      ]
+    },
+    {
+      "tag": "sore_throat_severity",
+      "patterns": [
+        "It’s mild",
+        "It's moderate",
+        "It’s pretty bad",
+        "It’s severe",
+        "It’s unbearable"
+      ],
+      "responses": [
+        "For mild sore throats, try staying hydrated and drinking warm tea. If it worsens, consider seeing a doctor.",
+        "If it’s moderate, rest and hydration may help, but keep an eye on additional symptoms like a fever.",
+        "If it’s pretty bad, you might want to try throat lozenges or warm saltwater gargling. Let me know if you develop other symptoms.",
+        "For severe sore throats, a visit to a doctor might be necessary to check for infections like strep throat.",
+        "If the sore throat is unbearable, I’d recommend seeing a doctor to rule out any serious conditions."
+      ]
+    },
+    {
+      "tag": "congestion",
+      "patterns": [
+        "I feel congested",
+        "I have a stuffy nose",
+        "My sinuses are blocked",
+        "I can’t breathe through my nose",
+        "My nose is really blocked"
+      ],
+      "responses": [
+        "Congestion is often a symptom of a cold or allergies. Have you experienced sneezing or a runny nose?",
+        "If you’re feeling congested, try using a saline nasal spray or steam inhalation. Have you noticed any other symptoms?",
+        "Congestion can be caused by allergies or colds. Do you also have a sore throat or cough?",
+        "For blocked sinuses, a warm compress or steam might help. Let me know if you experience any headaches or facial pain.",
+        "If your nose is really blocked, consider trying a decongestant. Do you also have a cough or fever?"
+      ],
+      "context_followup": [
+        "congestion_duration",
+        "congestion_severity"
+      ]
+    },
+    {
+      "tag": "congestion_duration",
+      "patterns": [
+        "It started today",
+        "It’s been a few days",
+        "It’s been over a week",
+        "It started yesterday",
+        "I’ve had it for three days"
+      ],
+      "responses": [
+        "If the congestion just started today, keep monitoring for additional symptoms. Rest and hydration can help.",
+        "If it’s been a few days, it might be a cold or allergy. Have you tried any over-the-counter treatments?",
+        "Congestion lasting over a week might need medical attention to rule out infections like sinusitis.",
+        "If it started yesterday, monitor your symptoms and try steam inhalation. Let me know if you notice any improvement.",
+        "If you’ve had congestion for three days, it could be related to a cold. Have you noticed any cough or fever?"
+      ]
+    },
+    {
+      "tag": "congestion_severity",
+      "patterns": [
+        "It’s mild",
+        "It’s moderate",
+        "It’s pretty bad",
+        "It’s severe",
+        "It’s unbearable"
+      ],
+      "responses": [
+        "For mild congestion, steam inhalation or a saline nasal spray may help. If it worsens, consult a doctor.",
+        "Moderate congestion can usually be relieved with decongestants or steam inhalation. Let me know if it persists.",
+        "If the congestion is pretty bad, you might want to try a decongestant. Keep an eye on any other symptoms like headaches.",
+        "Severe congestion could be due to an infection like sinusitis. If it doesn’t improve, a doctor’s visit may be needed.",
+        "If congestion feels unbearable, it’s a good idea to visit a healthcare provider to check for any underlying infections."
+      ]
+    },
+    {
+      "tag": "cough_query",
+      "patterns": [
+        "I have a cough",
+        "I can't stop coughing",
+        "I have a dry cough",
+        "I have a wet cough",
+        "I'm coughing a lot"
+      ],
+      "responses": [
+        "Coughs can be caused by a variety of conditions. Is it a dry or wet cough?",
+        "If you’re coughing frequently, it could be a cold, flu, or allergies. Do you have a fever?",
+        "For dry coughs, try staying hydrated and using cough drops. Do you have any other symptoms like congestion?",
+        "A wet cough could be from a cold or bronchitis. Have you noticed any mucus or phlegm?",
+        "If you're coughing a lot, it’s important to monitor for any signs of fever or shortness of breath."
+      ],
+      "context_followup": [
+        "cough_duration",
+        "cough_severity"
+      ]
+    },
+    {
+      "tag": "cough_duration",
+      "patterns": [
+        "It just started today",
+        "I’ve had it for a few days",
+        "It’s been over a week",
+        "It started yesterday",
+        "It’s been going on for two weeks"
+      ],
+      "responses": [
+        "If the cough just started today, keep an eye on it and try staying hydrated. Let me know if it persists.",
+        "Coughs lasting a few days could be due to a cold or flu. Are you noticing any other symptoms like fever or sore throat?",
+        "If the cough has been going on for more than a week, a doctor’s visit may be necessary to rule out bronchitis or other infections.",
+        "If it started yesterday, monitor your symptoms closely. Hydration and rest may help. Let me know if things change.",
+        "A cough lasting two weeks or more could indicate a more serious condition, so it’s best to consult a doctor."
+      ]
+    },
+    {
+      "tag": "cough_severity",
+      "patterns": [
+        "It’s mild",
+        "It’s moderate",
+        "It’s pretty bad",
+        "It’s severe",
+        "It’s unbearable"
+      ],
+      "responses": [
+        "For mild coughs, staying hydrated and using cough drops can help. Let me know if it worsens.",
+        "Moderate coughs may need cough syrup or lozenges. Keep an eye on any other symptoms like shortness of breath.",
+        "If the cough is pretty bad, try over-the-counter cough medicine. If it persists or worsens, consult a doctor.",
+        "Severe coughs could be a sign of bronchitis or another infection. If it’s not improving, visit a healthcare provider.",
+        "If the cough feels unbearable, I’d recommend seeing a doctor to assess for possible infections."
+      ]
+    },
+    {
+      "tag": "shortness_of_breath",
+      "patterns": [
+        "I’m having trouble breathing",
+        "I can’t breathe properly",
+        "I feel out of breath",
+        "I’m struggling to catch my breath",
+        "I feel short of breath"
+      ],
+      "responses": [
+        "Shortness of breath can be a serious symptom. Have you noticed this with any chest pain or fever?",
+        "If you're having trouble breathing, it could be related to asthma, allergies, or an infection. Have you experienced this before?",
+        "If you’re feeling out of breath, monitor it closely. If it worsens, you should seek medical attention.",
+        "Struggling to catch your breath could indicate a respiratory condition. Let me know if you have any other symptoms like a cough.",
+        "Shortness of breath can be concerning. Are you also feeling lightheaded or experiencing any chest pain?"
+      ],
+      "context_followup": [
+        "shortness_of_breath_duration",
+        "shortness_of_breath_severity"
+      ]
+    },
+    {
+      "tag": "shortness_of_breath_duration",
+      "patterns": [
+        "It just started today",
+        "I’ve been feeling this way for a few days",
+        "It’s been going on for a week",
+        "It started yesterday",
+        "I’ve been struggling to breathe for over a week"
+      ],
+      "responses": [
+        "If the shortness of breath started today, monitor it closely. If it worsens, I’d recommend visiting a doctor.",
+        "Shortness of breath lasting a few days could be related to a respiratory infection. Have you had a cough or fever as well?",
+        "If you’ve been feeling short of breath for over a week, it’s important to consult a doctor to rule out any serious conditions.",
+        "If it started yesterday, make sure to rest and monitor for any worsening symptoms. Let me know if anything changes.",
+        "Shortness of breath lasting more than a week should be checked by a healthcare provider. Please consider seeing a doctor."
+      ]
+    },
+    {
+      "tag": "shortness_of_breath_severity",
+      "patterns": [
+        "It’s mild",
+        "It’s moderate",
+        "It’s pretty bad",
+        "It’s severe",
+        "It’s unbearable"
+      ],
+      "responses": [
+        "For mild shortness of breath, resting and avoiding strenuous activity can help. Let me know if it worsens.",
+        "Moderate shortness of breath might need further evaluation if it persists. Keep an eye on any other symptoms like chest pain.",
+        "If it's pretty bad, you might need to visit a doctor to assess the cause. Let me know if you feel any chest discomfort.",
+        "Severe shortness of breath could indicate a serious respiratory condition. Please seek medical attention if it doesn’t improve.",
+        "If it feels unbearable, I’d recommend seeking emergency care to ensure it’s not related to a serious underlying issue."
+      ]
+    }
+  ]
+}
